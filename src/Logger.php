@@ -9,6 +9,7 @@ class RoxbyLogger
 {
     private $apiKey = null;
     private $application = null; // app identifier
+
     public static function getInstance()
     {
         static $instance = null;
@@ -17,30 +18,63 @@ class RoxbyLogger
         }
         return $instance;
     }
+
+    /**
+     * @param $apiKey string
+     */
     public function setApiKey($apiKey)
     {
         $this->apiKey = $apiKey;
     }
+
+    /**
+     * @param $application string
+     */
     public function setApplication($application)
     {
         $this->application = $application;
     }
+
+    /**
+     * @param $message
+     * @param array $data
+     * @throws \Exception
+     */
     public function critical($message, array $data = [])
     {
         $this->log('critical', $message, $data);
     }
+
+    /**
+     * @param $message
+     * @param array $data
+     * @throws \Exception
+     */
     public function error($message, array $data = [])
     {
         $this->log('error', $message, $data);
     }
+
+    /**
+     * @param $message
+     * @param array $data
+     * @throws \Exception
+     */
     public function info($message, array $data = [])
     {
         $this->log('info', $message, $data);
     }
+
+    /**
+     * @param $message
+     * @param array $data
+     * @throws \Exception
+     */
     public function debug($message, array $data = [])
     {
         $this->log('debug', $message, $data);
     }
+
     /**
      * Add the log to list or send now
      *
@@ -54,6 +88,7 @@ class RoxbyLogger
         $log = $this->makeLog($message, $data);
         $this->sendLog($log, $type);
     }
+
     /**
      * Send the log to Logz.io
      *
@@ -74,6 +109,7 @@ class RoxbyLogger
         ]);
         return $response->getBody();
     }
+
     /**
      * Format the log to send
      *
@@ -93,6 +129,7 @@ class RoxbyLogger
             )
         );
     }
+
     /**
      * Validate if log can be sent
      * @throws \Exception
@@ -103,12 +140,17 @@ class RoxbyLogger
             throw new \Exception('You must specify Logz.io api key and your application');
         }
     }
+
+    /**
+     * @return \GuzzleHttp\Client
+     */
     private function getClient()
     {
         return new \GuzzleHttp\Client([
             'base_uri' => 'https://listener.logz.io:8071'
         ]);
     }
+    
     private function __construct()
     {
     }
