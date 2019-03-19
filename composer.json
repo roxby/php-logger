@@ -1,0 +1,12 @@
+{
+    "name": "roxby/logger",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Roxby\\Logger\\": "src/"
+        }
+    }
+}
