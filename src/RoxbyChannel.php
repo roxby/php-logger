@@ -4,7 +4,7 @@ namespace Roxby\Logger;
 
 use Inpsyde\LogzIoMonolog\Handler\LogzIoHandler;
 
-class RoxyChannel
+class RoxbyChannel
 {
     public static function getLogger($channelName)
     {
