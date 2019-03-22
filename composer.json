@@ -3,7 +3,7 @@
     "require": {
         "ext-json": "*",
         "inpsyde/logzio-monolog": "^0.4.0",
-        "vlucas/phpdotenv": "^3.3"
+        "vlucas/phpdotenv": "^2.6"
     },
     "autoload": {
         "psr-4": {

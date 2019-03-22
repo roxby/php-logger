@@ -1,6 +1,6 @@
 <?php
 require __DIR__ .'/src/bootstrap.php';
-//$dotenv = Dotenv\Dotenv::create(__DIR__);
+//$dotenv = new Dotenv\Dotenv(__DIR__);
 //$dotenv->load();
 //
 //$logger = \Roxby\Logger\RoxyChannel::getLogger('test');
