@@ -51,6 +51,6 @@ class RoxbyFormatter extends JsonFormatter {
 
     private static function filter($val)
     {
-        return ($val !== NULL && $val !== FALSE && $val !== '');
+        return ($val !== NULL && $val !== '');
     }
 }
