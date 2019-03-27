@@ -33,7 +33,7 @@ class RoxbyFormatter extends JsonFormatter {
         }
 
         if (isset($record['context']) && is_array($record['context'])) {
-            $context = array_filter($record['context']);
+            $context = array_filter($record['context'], 'self::filter');
             foreach ($context as $key => $value) {
                 $record[$key] = $value;
             }
@@ -41,11 +41,16 @@ class RoxbyFormatter extends JsonFormatter {
         }
 
         if (isset($record['extra']) && is_array($record['extra'])) {
-            $record['extra'] = array_filter($record['extra']);
+            $record['extra'] = array_filter($record['extra'], 'self::filter');
             if(empty($record['extra'])) {
                 unset($record['extra']);
             }
         }
         return parent::format($record);
+    }
+
+    private static function filter($val)
+    {
+        return ($val !== NULL && $val !== FALSE && $val !== '');
     }
 }
