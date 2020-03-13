@@ -1,13 +1,14 @@
 {
-    "name": "roxby/logger",
-    "require": {
-        "ext-json": "*",
-        "inpsyde/logzio-monolog": "^0.4.0",
-        "vlucas/phpdotenv": "^2.6"
-    },
-    "autoload": {
-        "psr-4": {
-            "Roxby\\Logger\\": "src/"
-        }
+  "name": "roxby/logger",
+  "require": {
+    "ext-json": "*",
+    "vlucas/phpdotenv": "^2.6",
+    "ext-curl": "*",
+    "monolog/monolog": "^1.24"
+  },
+  "autoload": {
+    "psr-4": {
+      "Roxby\\Logger\\": "src/"
     }
+  }
 }
