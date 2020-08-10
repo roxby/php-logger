@@ -4,7 +4,7 @@
     "ext-json": "*",
     "vlucas/phpdotenv": "^2.6",
     "ext-curl": "*",
-    "monolog/monolog": "^1.24"
+    "monolog/monolog": "^2.0"
   },
   "autoload": {
     "psr-4": {
