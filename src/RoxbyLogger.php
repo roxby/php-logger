@@ -16,16 +16,18 @@ class RoxbyLogger extends Logger {
 
     /**
      * Adds a log record.
-     *
      * @param  int $level The logging level
      * @param  string $message The log message
      * @param  array $context The log context
-     * @return void Whether the record has been processed
+     * @param int|\Monolog\int $level
+     * @param \Monolog\string|string $message
+     * @param array $context
+     * @return bool
      */
-    public function addRecord($level, $message, array $context = array())
+    public function addRecord($level, $message, array $context = array()) :bool
     {
         $context['application'] = $this->application;
         $context['host'] = $this->host;
-        parent::addRecord($level, $message, $context);
+        return parent::addRecord($level, $message, $context);
     }
 }

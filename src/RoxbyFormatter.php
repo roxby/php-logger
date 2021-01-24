@@ -11,8 +11,8 @@ class RoxbyFormatter extends JsonFormatter {
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
-     * @param int  $batchMode
-     * @param bool $appendNewline
+     * @param int|void  $batchMode
+     * @param bool|void $appendNewline
      */
     public function __construct($batchMode = self::BATCH_MODE_NEWLINES, $appendNewline = true)
     {
@@ -25,7 +25,7 @@ class RoxbyFormatter extends JsonFormatter {
      * @param array $record
      * @return string
      */
-    public function format(array $record)
+    public function format(array $record) : string
     {
         if (isset($record['datetime']) && ( $record['datetime'] instanceof \DateTimeInterface )) {
             $record['@timestamp'] = $record['datetime']->format(self::DATETIME_FORMAT);

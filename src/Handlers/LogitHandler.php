@@ -4,6 +4,7 @@ namespace Roxby\Logger\Handlers;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use Monolog\Handler\Curl\Util;
+use Roxby\Logger\RoxbyFormatter;
 
 class LogitHandler extends AbstractProcessingHandler
 {
@@ -18,7 +19,7 @@ class LogitHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    protected function write(array $record)
+    protected function write(array $record) :void
     {
         $this->send($record['formatted']);
     }
