@@ -5,7 +5,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use Monolog\Handler\Curl\Util;
 use Roxby\Logger\RoxbyFormatter;
-
+use Monolog\Formatter\FormatterInterface;
 class LogitHandler extends AbstractProcessingHandler
 {
 
@@ -45,7 +45,7 @@ class LogitHandler extends AbstractProcessingHandler
         Util::execute($ch);
     }
 
-    protected function getDefaultFormatter()
+    protected function getDefaultFormatter() : FormatterInterface
     {
         return new RoxbyFormatter();
     }
