@@ -27,22 +27,33 @@ class LogitHandler extends AbstractProcessingHandler
 
     protected function send($data)
     {
-        $ch = curl_init();
-        $options = [
-            CURLOPT_POST => 1,
-            CURLOPT_URL => $this->endpoint,
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_HTTPHEADER => [
-                'Content-Type: application/json',
-                'LogType: default',
-                'ApiKey:' . $this->apiKey
-            ],
-            CURLOPT_POSTFIELDS => $data,
+        try {
+            $ch = curl_init();
+            $options = [
+                CURLOPT_POST => 1,
+                CURLOPT_URL => $this->endpoint,
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_HTTPHEADER => [
+                    'Content-Type: application/json',
+                    'LogType: default',
+                    'ApiKey:' . $this->apiKey
+                ],
+                CURLOPT_POSTFIELDS => $data,
 
-        ];
-        curl_setopt_array($ch, $options);
+            ];
+            curl_setopt_array($ch, $options);
 
-        Util::execute($ch);
+            Util::execute($ch);
+            return [
+                'result' => true
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'result' => false,
+                'error' => $exception->getMessage()
+            ];
+        }
+
     }
 
     protected function getDefaultFormatter() : FormatterInterface
