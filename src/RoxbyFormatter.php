@@ -46,6 +46,8 @@ class RoxbyFormatter extends JsonFormatter {
                 unset($record['extra']);
             }
         }
+        $record['application'] = getenv('APP_NAME');
+        $record['host'] = gethostname();
         return parent::format($record);
     }
 
