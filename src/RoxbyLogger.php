@@ -1,5 +1,6 @@
 <?php
 namespace Roxby\Logger;
+use DateTimeImmutable;
 use Monolog\Logger;
 
 class RoxbyLogger extends Logger {
@@ -14,17 +15,16 @@ class RoxbyLogger extends Logger {
         $this->host = gethostname();
     }
 
+
     /**
      * Adds a log record.
-     * @param  int $level The logging level
-     * @param  string $message The log message
-     * @param  array $context The log context
-     * @param int|\Monolog\int $level
-     * @param \Monolog\string|string $message
+     * @param int $level
+     * @param string $message
      * @param array $context
+     * @param DateTimeImmutable|NULL $datetime
      * @return bool
      */
-    public function addRecord($level, $message, array $context = array()) :bool
+    public function addRecord(int $level, string  $message, array $context = array(), DateTimeImmutable $datetime = NULL) :bool
     {
         $context['application'] = $this->application;
         $context['host'] = $this->host;
