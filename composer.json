@@ -2,7 +2,7 @@
   "name": "roxby/logger",
   "require": {
     "ext-json": "*",
-    "vlucas/phpdotenv": "^4.2",
+    "vlucas/phpdotenv": "^5.2",
     "ext-curl": "*",
     "monolog/monolog": "^2.0"
   },
